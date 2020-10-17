@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  dp:
+    build: ./dp
+    volumes:
+      - ./dp/config/:/opt/ibm/datapower/drouter/config
+      - ./dp/local/:/opt/ibm/datapower/drouter/local
+      - ./dp/certs/:/opt/ibm/datapower/root/secure/usrcerts
+    ports:
+      - "9090:9090"
+      - "5554:5554"
+      - "8443:8443"
+    expose:
+      - "9090"
+      - "5554"
+      - "8443"
+  ansible:
+    build: ./ansible/
+    volumes:
+      - ./ansible/ansible:/ansible
+    command: tail -F /ansible/requirements.txt
