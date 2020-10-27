@@ -14,8 +14,3 @@ services:
       - "9090"
       - "5554"
       - "8443"
-  ansible:
-    build: ./ansible/
-    volumes:
-      - ./ansible/ansible:/ansible
-    command: tail -F /ansible/requirements.txt
