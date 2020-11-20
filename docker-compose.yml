@@ -14,3 +14,8 @@ services:
       - "9090"
       - "5554"
       - "8443"
+  ansible:
+    build: ./ansible
+    volumes:
+      - ./ansible/dev:/DEV/
+    command: "tail -f /var/log/alternatives.log"
